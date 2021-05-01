@@ -29,7 +29,7 @@ class GeoIp
    */
   public static function init(string $geoipDbPath = null): GeoIp
   {
-    return new self($geoipDbPath ?: __DIR__ . '/../db/GeoLite2-City.mmdb');
+    return new self($geoipDbPath ?: __DIR__ . '/../db/GeoLite2-City/GeoLite2-City.mmdb');
   }
 
   /**
