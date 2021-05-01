@@ -36,12 +36,21 @@ class GeoIp
    * @param string $ip
    *
    * @return Location
-   * @throws AddressNotFoundException
    * @throws InvalidDatabaseException
    */
-  public function getIpLocation(string $ip): Location
+  public function getIpLocation(string $ip): ?Location
   {
-    $record = $this->geoipReader->city($ip);
+    $record = null;
+
+    try {
+      $record = $this->geoipReader->city($ip);
+    }
+    catch(AddressNotFoundException $exception) {}
+
+    if (!$record)
+    {
+      return null;
+    }
 
     $location = Location::create();
     $location->latitude = $record->location->latitude;
