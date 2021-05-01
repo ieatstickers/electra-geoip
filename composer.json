@@ -1,0 +1,40 @@
+{
+  "name": "electra/geoip",
+  "description": "Electra GeoIP",
+  "minimum-stability": "dev",
+  "scripts": {
+    "post-update-cmd": [
+      "tronovav\\GeoIP2Update\\ComposerClient::run"
+    ]
+  },
+  "extra": {
+    "tronovav\\GeoIP2Update\\ComposerClient::run": {
+      "license_key": "j4vtqCFB8u7UHTv6",
+      "dir": "@composer/db",
+      "editions": [ "GeoLite2-City" ]
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url":  "https://github.com/ieatstickers/electra-utility.git"
+    }
+  ],
+  "require": {
+    "electra/utility": "dev-master",
+    "ext-json": "*",
+    "geoip2/geoip2": "^2.11",
+    "tronovav/geoip2-update": "^2.1"
+  },
+  "require-dev" : {},
+  "authors": [
+    {
+      "name": "Mike Burke"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Electra\\GeoIp\\": "src"
+    }
+  }
+}
